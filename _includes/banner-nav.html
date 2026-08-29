@@ -1,0 +1,18 @@
+{%- comment -%}
+  200x40 バナーによるリンクナビ。トップページ・LINKSページ共通。
+{%- endcomment -%}
+<ul class="banner-grid">
+  {%- for banner in site.data.banners %}
+  <li class="banner-grid__item">
+    {%- if banner.external %}
+    <a class="banner-link" href="{{ banner.url }}" target="_blank" rel="noopener noreferrer">
+      <img src="{{ banner.image | relative_url }}" width="200" height="40" alt="{{ banner.title }}バナー(外部サイトへ)" loading="lazy">
+    </a>
+    {%- else %}
+    <a class="banner-link" href="{{ banner.url | relative_url }}">
+      <img src="{{ banner.image | relative_url }}" width="200" height="40" alt="{{ banner.title }}バナー" loading="lazy">
+    </a>
+    {%- endif %}
+  </li>
+  {%- endfor %}
+</ul>

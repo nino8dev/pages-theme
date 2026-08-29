@@ -1,0 +1,17 @@
+{%- comment -%}
+  パンくずリスト。page.layout によって親階層を出し分ける。
+{%- endcomment -%}
+<nav class="breadcrumb" aria-label="パンくずリスト">
+  <ol>
+    <li><a href="{{ '/' | relative_url }}">HOME</a></li>
+    {%- if page.layout == "post" %}
+      <li><a href="{{ '/blog/' | relative_url }}">BLOG</a></li>
+      <li aria-current="page">{{ page.title }}</li>
+    {%- elsif page.layout == "project" %}
+      <li><a href="{{ '/works/' | relative_url }}">WORKS</a></li>
+      <li aria-current="page">{{ page.title }}</li>
+    {%- else %}
+      <li aria-current="page">{{ page.title | default: site.title }}</li>
+    {%- endif %}
+  </ol>
+</nav>

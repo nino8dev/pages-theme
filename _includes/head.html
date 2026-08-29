@@ -1,1 +1,44 @@
-<!-- OGP や favicon などはお好みで -->
+{%- comment -%}
+  SEO / OGP 用のメタタグをまとめた include。
+  ページ側の front matter (title, description, image) があれば優先し、
+  無ければ site 設定・profile.yml の値にフォールバックする。
+{%- endcomment -%}
+{%- assign page_title = page.title | default: site.title -%}
+{%- if page.title and page.title != site.title -%}
+  {%- assign full_title = page.title | append: " | " | append: site.title -%}
+{%- else -%}
+  {%- assign full_title = site.title -%}
+{%- endif -%}
+{%- assign page_description = page.description | default: page.summary | default: site.description -%}
+{%- assign ogp_image_path = page.image | default: site.data.site_settings.default_ogp_image -%}
+{%- assign canonical_url = page.url | absolute_url -%}
+
+<title>{{ full_title }}</title>
+<meta name="description" content="{{ page_description | strip_html | strip_newlines | truncate: 160 }}">
+<link rel="canonical" href="{{ canonical_url }}">
+
+<!-- OGP -->
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ full_title }}">
+<meta property="og:description" content="{{ page_description | strip_html | strip_newlines | truncate: 160 }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta property="og:image" content="{{ ogp_image_path | absolute_url }}">
+<meta property="og:locale" content="ja_JP">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ full_title }}">
+<meta name="twitter:description" content="{{ page_description | strip_html | strip_newlines | truncate: 160 }}">
+<meta name="twitter:image" content="{{ ogp_image_path | absolute_url }}">
+{%- if site.twitter_username %}
+<meta name="twitter:site" content="@{{ site.twitter_username }}">
+{%- endif %}
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}">
+
+<!-- Feeds -->
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
+
+<meta name="robots" content="index, follow">

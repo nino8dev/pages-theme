@@ -1,1 +1,45 @@
-$accent: #0a7cff;
+// =============================================================
+// 配色・寸法などの基本変数
+// 2000年代前半の個人ホームページを思わせる、控えめで低彩度な配色。
+// コントラスト比は WCAG AA (4.5:1) を満たすよう選定している。
+// =============================================================
+
+// --- カラー ---
+$color-bg:        #f5f3ea; // 背景(生成り紙風)
+$color-bg-inset:  #fbfaf4; // 罫線ボックス内の背景
+$color-text:      #1f2328; // 本文文字
+$color-text-soft: #4a4f57; // 補足文字
+$color-border:    #9c9788; // 罫線(通常)
+$color-border-strong: #4a4f57; // 罫線(強調・二重線)
+
+$color-navy:   #1a2b4c; // 紺
+$color-wine:   #7b1e28; // えんじ
+$color-green:  #1f4d3a; // 深緑
+$color-gray:   #55524a; // 灰色
+
+$color-link:         #0000ee; // 未訪問リンク(懐かしの青)
+$color-link-visited: #551a8b; // 訪問済みリンク(紫)
+$color-link-hover:   #b30000;
+
+$color-header-bg: #1a2b4c;
+$color-header-fg: #f5f3ea;
+
+$color-new-label: #c1121f;
+
+// 互換用(既存参照)
+$accent: $color-link;
+
+// --- 寸法 ---
+$content-width:  880px;
+$sidebar-width:  180px;
+$border-width-thin:  1px;
+$border-width-thick: 2px;
+
+// --- フォント ---
+$font-base: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic Medium", "Meiryo",
+             -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$font-mono: "SF Mono", "Osaka-Mono", "MS Gothic", Consolas, "Courier New", monospace;
+
+$font-size-base: 15px;
+$font-size-small: 13px;
+$line-height-base: 1.85;

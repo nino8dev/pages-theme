@@ -3,23 +3,78 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Theme</title>
-  <link rel="stylesheet" href="/assets/css/theme.css">
-  <!-- OGP や favicon などはお好みで -->
+  <link rel="stylesheet" href="/assets/css/theme.css"><title>Hello Theme | Theme Sandbox</title>
+<meta name="description" content="">
+<link rel="canonical" href="http://0.0.0.0:4000/">
+
+<!-- OGP -->
+<meta property="og:site_name" content="Theme Sandbox">
+<meta property="og:title" content="Hello Theme | Theme Sandbox">
+<meta property="og:description" content="">
+<meta property="og:url" content="http://0.0.0.0:4000/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="">
+<meta property="og:locale" content="ja_JP">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hello Theme | Theme Sandbox">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+
+<!-- Feeds -->
+<link rel="alternate" type="application/rss+xml" title="Theme Sandbox" href="http://0.0.0.0:4000/feed.xml">
+
+<meta name="robots" content="index, follow">
 
 </head>
 <body>
+  <a class="skip-link" href="#main-content">本文へ移動</a>
   <header class="site-header">
-  <a href="/">Theme Sandbox</a>
+  <div class="site-header__inner">
+    <p class="site-header__title">
+      <a class="site-header__title-link" href="/">Theme Sandbox</a>
+    </p>
+  </div>
 </header>
 
-  <main class="container"><article class="page">
+  <div class="page-wrap"><div class="layout-columns">
+      <nav class="site-nav" aria-label="サイト内メニュー">
+  <p class="site-nav__heading">MENU</p>
+  <ul class="site-nav__list">
+  </ul>
+  <p class="site-nav__heading">EXTERNAL</p>
+  <ul class="site-nav__list">
+    <li><a href="" target="_blank" rel="noopener noreferrer">GITHUB<span class="visually-hidden">(外部サイトへ)</span></a></li>
+  </ul>
+</nav>
+
+      <main class="main-content" id="main-content">
+        <a id="top"></a>
+        <article class="page">
   <h1>Hello Theme</h1>
   <p>This is a sandbox.</p>
 
 </article>
-</main>
-  <footer class="site-footer">&copy; 2025 Theme Sandbox</footer>
+
+      </main>
+    </div>
+  </div>
+  <footer class="site-footer">
+  <p class="back-to-top"><a href="#top">▲ このページの先頭へ戻る</a></p>
+
+  <p class="site-footer__sitemap">
+  </p>
+
+  <p>
+    <a href="/feed.xml">RSS</a> | <a href="" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </p>
+
+  <p>&copy; 2026 Theme Sandbox. Powered by Jekyll &amp; GitHub Pages. (Source: <a href="https://github.com/nino8dev/nino8dev">nino8dev</a> / <a href="https://github.com/nino8dev/pages-theme">pages-theme</a>)</p>
+</footer>
 
 </body>
 </html>

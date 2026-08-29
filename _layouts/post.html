@@ -3,6 +3,30 @@ layout: default
 ---
 <article class="post">
   <h1>{{ page.title }}</h1>
-  <p><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time></p>
+  <p class="entry-card__meta">
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+    {%- if page.categories.size > 0 %}
+    /
+    <span class="tag-list" role="list">
+      {%- for category in page.categories %}<span class="tag-list__item">{{ category }}</span>{% endfor %}
+    </span>
+    {%- endif %}
+  </p>
+
   {{ content }}
+
+  {%- if page.tags.size > 0 %}
+  <p class="section-note">タグ: {{ page.tags | join: ", " }}</p>
+  {%- endif %}
 </article>
+
+<nav class="post-pagination" aria-label="前後の記事">
+  <ul class="site-nav__list" style="border:none;">
+    {%- if page.previous %}
+    <li>&lt;&lt; <a href="{{ page.previous.url | relative_url }}">{{ page.previous.title }}</a></li>
+    {%- endif %}
+    {%- if page.next %}
+    <li><a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a> &gt;&gt;</li>
+    {%- endif %}
+  </ul>
+</nav>

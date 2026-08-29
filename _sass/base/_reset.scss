@@ -1,0 +1,50 @@
+// =============================================================
+// 最小限のリセット(モダンな実装だが見た目はレトロを維持する)
+// =============================================================
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: $color-bg;
+  color: $color-text;
+  font-family: $font-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+
+  // 方眼紙・ドット風の薄い背景パターン(画像ファイル不使用、CSSのみ)
+  background-image:
+    radial-gradient(rgba($color-border, 0.35) 1px, transparent 1px);
+  background-size: 18px 18px;
+  background-position: -9px -9px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+code, kbd, pre, samp {
+  font-family: $font-mono;
+}
+
+// prefers-reduced-motion 対応: アニメーション・トランジションを無効化
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

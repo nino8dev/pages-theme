@@ -1,0 +1,83 @@
+// =============================================================
+// タイポグラフィ(小さめ見出し・等幅フォントの部分使用)
+// =============================================================
+
+h1, h2, h3, h4 {
+  font-weight: bold;
+  line-height: 1.5;
+  color: $color-navy;
+}
+
+h1 {
+  font-size: 1.5rem;
+  border-bottom: $border-width-thick solid $color-navy;
+  padding-bottom: 0.4em;
+  margin: 0 0 0.8em;
+}
+
+h2 {
+  font-size: 1.2rem;
+  border-left: 6px solid $color-navy;
+  padding-left: 0.5em;
+  margin: 1.8em 0 0.8em;
+}
+
+h3 {
+  font-size: 1.05rem;
+  margin: 1.4em 0 0.6em;
+
+  &::before {
+    content: "▶ ";
+    color: $color-wine;
+  }
+}
+
+p, ul, ol, dl {
+  margin: 0 0 1em;
+}
+
+ul, ol {
+  padding-left: 1.6em;
+}
+
+small, .text-small {
+  font-size: $font-size-small;
+  color: $color-text-soft;
+}
+
+.text-mono {
+  font-family: $font-mono;
+}
+
+a {
+  color: $color-link;
+  text-decoration: underline;
+
+  &:visited {
+    color: $color-link-visited;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: $color-link-hover;
+  }
+
+  &:focus-visible {
+    outline: 2px dashed $color-wine;
+    outline-offset: 2px;
+  }
+}
+
+hr {
+  border: none;
+  border-top: $border-width-thin dashed $color-border;
+  margin: 1.6em 0;
+}
+
+blockquote {
+  margin: 0 0 1em;
+  padding: 0.4em 1em;
+  border-left: 4px solid $color-border;
+  color: $color-text-soft;
+  background: $color-bg-inset;
+}

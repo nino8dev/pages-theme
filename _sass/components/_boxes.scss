@@ -1,0 +1,177 @@
+// =============================================================
+// fieldset 風の情報枠・ラベル・更新履歴・テーブルなど
+// =============================================================
+
+.info-box {
+  border: $border-width-thin solid $color-border;
+  background: #fff;
+  padding: 0.9em 1em;
+  margin: 1.2em 0;
+}
+
+.info-box__title {
+  margin: -0.9em -1em 0.8em;
+  padding: 0.35em 0.8em;
+  background: $color-navy;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+// 管理人コメント風の吹き出し
+.admin-comment {
+  border: $border-width-thin dashed $color-wine;
+  background: $color-bg-inset;
+  padding: 0.8em 1em;
+  margin: 1.2em 0;
+  position: relative;
+}
+
+.admin-comment__label {
+  font-size: $font-size-small;
+  font-weight: bold;
+  color: $color-wine;
+  display: block;
+  margin-bottom: 0.3em;
+}
+
+// NEW! / UPDATE ラベル
+.label-new,
+.label-update {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 0.05em 0.4em;
+  margin-left: 0.4em;
+  border: 1px solid currentColor;
+  vertical-align: 0.1em;
+}
+
+.label-new {
+  color: $color-new-label;
+}
+
+.label-update {
+  color: $color-green;
+}
+
+// 更新履歴
+.update-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.update-list__item {
+  display: flex;
+  gap: 0.8em;
+  padding: 0.4em 0;
+  border-bottom: 1px dotted $color-border;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.update-list__item:last-child {
+  border-bottom: none;
+}
+
+.update-list__date {
+  font-family: $font-mono;
+  color: $color-gray;
+  flex: 0 0 auto;
+}
+
+// テーブル(スキル・料金感など)
+.retro-table {
+  width: 100%;
+  margin: 1em 0;
+  border: $border-width-thin solid $color-border-strong;
+}
+
+.retro-table th,
+.retro-table td {
+  border: 1px solid $color-border;
+  padding: 0.5em 0.7em;
+  text-align: left;
+  vertical-align: top;
+}
+
+.retro-table th {
+  background: $color-navy;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.retro-table tr:nth-child(even) td {
+  background: $color-bg-inset;
+}
+
+// カード的な一覧(実績・サービス) ※角丸多用は避け罫線ベースに
+.entry-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.entry-card {
+  border: $border-width-thin solid $color-border;
+  background: #fff;
+  padding: 0.9em 1.1em;
+  margin: 0 0 1em;
+}
+
+.entry-card__title {
+  margin: 0 0 0.4em;
+}
+
+.entry-card__meta {
+  font-size: $font-size-small;
+  color: $color-text-soft;
+  margin: 0 0 0.5em;
+}
+
+.tag-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin: 0.4em 0;
+  padding: 0;
+}
+
+.tag-list__item {
+  border: 1px solid $color-green;
+  color: $color-green;
+  font-size: $font-size-small;
+  font-family: $font-mono;
+  padding: 0.05em 0.5em;
+}
+
+// 相談・お問い合わせカードなど強調枠
+.callout {
+  border: $border-width-thick solid $color-navy;
+  background: #fff;
+  padding: 1em 1.2em;
+  margin: 1.4em 0;
+}
+
+.callout--muted {
+  border-style: dashed;
+  border-color: $color-border;
+  color: $color-text-soft;
+}
+
+.definition-list dt {
+  font-weight: bold;
+  color: $color-navy;
+  margin-top: 0.8em;
+}
+
+.definition-list dd {
+  margin: 0.2em 0 0;
+}
+
+.section-note {
+  font-size: $font-size-small;
+  color: $color-text-soft;
+}

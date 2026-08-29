@@ -1,1 +1,24 @@
-<footer class="site-footer">&copy; {{ site.time | date: '%Y' }} {{ site.author | default: site.title }}</footer>
+<footer class="site-footer">
+  <p class="back-to-top"><a href="#top">▲ このページの先頭へ戻る</a></p>
+
+  <p class="site-footer__sitemap">
+    {%- for item in site.data.navigation %}
+      {%- assign show_item = true -%}
+      {%- if item.visibility == "blog" and site.data.site_settings.show_blog != true -%}
+        {%- assign show_item = false -%}
+      {%- elsif item.visibility == "projects" and site.data.site_settings.show_projects != true -%}
+        {%- assign show_item = false -%}
+      {%- elsif item.visibility == "contact" and contact_available != true -%}
+        {%- assign show_item = false -%}
+      {%- endif -%}
+      {%- if show_item %}<a href="{{ item.url | relative_url }}">{{ item.title }}</a>{% unless forloop.last %} | {% endunless %}{% endif -%}
+    {%- endfor %}
+  </p>
+
+  <p>
+    <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    {%- if site.data.site_settings.github_url != empty %} | <a href="{{ site.data.site_settings.github_url }}" target="_blank" rel="noopener noreferrer">GitHub</a>{% endif %}
+  </p>
+
+  <p>&copy; {{ site.time | date: '%Y' }} {{ site.data.profile.display_name | default: site.title }}. Powered by Jekyll &amp; GitHub Pages. (Source: <a href="https://github.com/nino8dev/nino8dev">nino8dev</a> / <a href="https://github.com/nino8dev/pages-theme">pages-theme</a>)</p>
+</footer>

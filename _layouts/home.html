@@ -1,12 +1,85 @@
 ---
 layout: default
 ---
-<h1>{{ site.title }}</h1>
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      <small>{{ post.date | date: "%Y-%m-%d" }}</small>
+{%- include contact-check.html %}
+<section class="hero">
+  <h1 class="hero__title">{{ site.title }}</h1>
+  <p class="hero__catch">{{ site.data.profile.headline }}</p>
+  <p class="hero__lead">{{ site.data.profile.summary }}</p>
+</section>
+
+<div class="admin-comment">
+  <span class="admin-comment__label">管理人より</span>
+  {{ content }}
+</div>
+
+<section class="home-section" aria-labelledby="home-services-heading">
+  <h2 id="home-services-heading">対応できること</h2>
+  <ul class="entry-list">
+    {%- for service in site.data.services limit: 4 %}
+    <li class="entry-card">
+      <p class="entry-card__title"><strong>{{ service.problem }}</strong></p>
+      <p>{{ service.solution }}</p>
     </li>
-  {% endfor %}
-</ul>
+    {%- endfor %}
+  </ul>
+  <p class="home-section__more"><a href="{{ '/services/' | relative_url }}">サービス一覧をもっと見る &gt;&gt;</a></p>
+</section>
+
+{%- if site.data.site_settings.show_projects %}
+<section class="home-section" aria-labelledby="home-works-heading">
+  <h2 id="home-works-heading">主な実績</h2>
+  <ul class="entry-list">
+    {%- for project in site.projects limit: 3 %}
+    <li class="entry-card">
+      <p class="entry-card__title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></p>
+      <p class="entry-card__meta text-mono">{{ project.category }}</p>
+      <p>{{ project.summary }}</p>
+    </li>
+    {%- endfor %}
+  </ul>
+  <p class="home-section__more"><a href="{{ '/works/' | relative_url }}">実績一覧をもっと見る &gt;&gt;</a></p>
+</section>
+{%- endif %}
+
+<section class="home-section" aria-labelledby="home-skills-heading">
+  <h2 id="home-skills-heading">使用技術</h2>
+  <ul class="tag-list">
+    {%- for group in site.data.skills %}
+      {%- for item in group.items limit: 3 %}
+      <li class="tag-list__item">{{ item.name }}</li>
+      {%- endfor %}
+    {%- endfor %}
+  </ul>
+  <p class="home-section__more"><a href="{{ '/skills/' | relative_url }}">スキル一覧をもっと見る &gt;&gt;</a></p>
+</section>
+
+<section class="home-section" aria-labelledby="home-banner-heading">
+  <h2 id="home-banner-heading">サイト内リンク</h2>
+  {% include banner-nav.html %}
+</section>
+
+{%- if site.data.site_settings.show_updates %}
+<section class="home-section" aria-labelledby="home-updates-heading">
+  <h2 id="home-updates-heading">更新履歴</h2>
+  <ul class="update-list">
+    {%- assign recent_updates = site.data.updates | reverse -%}
+    {%- for update in recent_updates limit: 5 %}
+    <li class="update-list__item">
+      <span class="update-list__date"><time datetime="{{ update.date }}">{{ update.date }}</time></span>
+      <span>{{ update.text }}</span>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+
+{%- if contact_available %}
+<section class="home-section" aria-labelledby="home-contact-heading">
+  <h2 id="home-contact-heading">お問い合わせ</h2>
+  <div class="callout">
+    <p>副業・スポットでのご相談を承っています。困っている業務やご依頼内容の概要をお聞かせください。</p>
+    <p><a href="{{ '/contact/' | relative_url }}">お問い合わせ方法を見る &gt;&gt;</a></p>
+  </div>
+</section>
+{%- endif %}

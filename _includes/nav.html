@@ -1,0 +1,33 @@
+{%- comment -%}
+  サイドメニュー(PC: 左サイド / スマホ: 横並び)。
+  navigation.yml の visibility に応じて site_settings.yml / 連絡先の設定で出し分ける。
+  contact_available は default.html 側で計算済みの変数を利用する(Jekyllのincludeは
+  呼び出し元のローカル変数を共有するため、そのまま参照できる)。
+{%- endcomment -%}
+<nav class="site-nav" aria-label="サイト内メニュー">
+  <p class="site-nav__heading">MENU</p>
+  <ul class="site-nav__list">
+    {%- for item in site.data.navigation %}
+      {%- assign show_item = true -%}
+      {%- if item.visibility == "blog" and site.data.site_settings.show_blog != true -%}
+        {%- assign show_item = false -%}
+      {%- elsif item.visibility == "projects" and site.data.site_settings.show_projects != true -%}
+        {%- assign show_item = false -%}
+      {%- elsif item.visibility == "contact" and contact_available != true -%}
+        {%- assign show_item = false -%}
+      {%- endif -%}
+      {%- if show_item %}
+      <li>
+        <a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
+      </li>
+      {%- endif %}
+    {%- endfor %}
+  </ul>
+
+  {%- if site.data.site_settings.github_url != empty %}
+  <p class="site-nav__heading">EXTERNAL</p>
+  <ul class="site-nav__list">
+    <li><a href="{{ site.data.site_settings.github_url }}" target="_blank" rel="noopener noreferrer">GITHUB<span class="visually-hidden">(外部サイトへ)</span></a></li>
+  </ul>
+  {%- endif %}
+</nav>

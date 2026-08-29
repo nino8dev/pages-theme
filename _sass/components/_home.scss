@@ -1,0 +1,38 @@
+// =============================================================
+// トップページ専用スタイル
+// =============================================================
+
+.hero {
+  border: $border-width-thick double $color-navy;
+  padding: 1.2em 1.4em;
+  margin-bottom: 1.4em;
+  background: #fff;
+}
+
+.hero__title {
+  margin: 0 0 0.3em;
+  font-size: 1.4rem;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.hero__catch {
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: $color-wine;
+  margin: 0 0 0.6em;
+}
+
+.hero__lead {
+  margin: 0;
+}
+
+.home-section {
+  margin: 1.8em 0;
+}
+
+.home-section__more {
+  text-align: right;
+  font-size: $font-size-small;
+  margin-top: 0.4em;
+}

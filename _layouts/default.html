@@ -3,13 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title | default: site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/theme.css' | relative_url }}">
-  {% include head.html %}
+  {%- include contact-check.html %}
+  {%- include head.html %}
 </head>
 <body>
+  <a class="skip-link" href="#main-content">本文へ移動</a>
   {% include header.html %}
-  <main class="container">{{ content }}</main>
+  <div class="page-wrap">
+    {%- unless page.url == "/" %}{% include breadcrumb.html %}{% endunless -%}
+    <div class="layout-columns">
+      {% include nav.html %}
+      <main class="main-content" id="main-content">
+        <a id="top"></a>
+        {{ content }}
+      </main>
+    </div>
+  </div>
   {% include footer.html %}
 </body>
 </html>

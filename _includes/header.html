@@ -1,3 +1,10 @@
 <header class="site-header">
-  <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  <div class="site-header__inner">
+    <p class="site-header__title">
+      <a class="site-header__title-link" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    </p>
+    {%- if site.data.profile.headline %}
+    <p class="site-header__tagline">{{ site.data.profile.headline }} - {{ site.data.profile.role }}</p>
+    {%- endif %}
+  </div>
 </header>

@@ -1,0 +1,34 @@
+{%- comment -%}
+  連絡先が1つでも設定されているかどうかを contact_available に代入する。
+  Jekyll の include タグは呼び出し元とスコープを共有するため、この include を
+  呼んだテンプレート側で {{ contact_available }} がそのまま使えるようになる。
+  レイアウトは内側(page/post/project/home)から順にレンダリングされ、外側の
+  default.html は最後にレンダリングされるため、default.html 側で1回代入するだけでは
+  内側のレイアウトからは参照できない。そのため、contact_available を使う各テンプレート
+  の先頭でこの include を呼ぶこと。
+{%- endcomment -%}
+{%- comment -%}
+  注意: Liquidでは空文字列 "" は truthy 扱いになる(falsyはnilとfalseのみ)。
+  そのため `if site.data.site_settings.contact_email` のような単純な判定だけでは、
+  YAML側で値を "" にしていても「設定済み」と誤判定されてしまう。
+  Liquid組み込みの `empty` と比較することでこの問題を回避する
+  (`blank` はRubyの `.blank?`(ActiveSupport由来)に依存するため、
+  ActiveSupportを読み込まないJekyllの素の環境では常にfalse相当になり使えない。
+  `empty` は素のRubyの `String#empty?` を使うため、値を必ず "" で初期化している
+  このプロジェクトのYAML運用ではこちらが正しく機能する)。
+  また、Liquidの `and`/`or` は演算子の優先順位が保証されないため、
+  1項目ずつ真偽値に変換してから最後にまとめて判定する。
+{%- endcomment -%}
+{%- assign has_discussions = false -%}
+{%- unless site.data.site_settings.contact_github_discussions_url == empty -%}{%- assign has_discussions = true -%}{%- endunless -%}
+{%- assign has_issues = false -%}
+{%- unless site.data.site_settings.contact_github_issues_url == empty -%}{%- assign has_issues = true -%}{%- endunless -%}
+{%- assign has_email = false -%}
+{%- unless site.data.site_settings.contact_email == empty -%}{%- assign has_email = true -%}{%- endunless -%}
+{%- assign has_form = false -%}
+{%- unless site.data.site_settings.contact_form_url == empty -%}{%- assign has_form = true -%}{%- endunless -%}
+
+{%- assign contact_available = false -%}
+{%- if has_discussions or has_issues or has_email or has_form -%}
+  {%- assign contact_available = true -%}
+{%- endif -%}

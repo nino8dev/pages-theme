@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<article class="project">
+  <h1>{{ page.title }}{% if page.featured %} <span class="label-new">PICKUP</span>{% endif %}</h1>
+  <p class="entry-card__meta text-mono">{{ page.category }}</p>
+
+  <p>{{ page.summary }}</p>
+
+  {%- if page.technologies.size > 0 %}
+  <ul class="tag-list">
+    {%- for tech in page.technologies %}<li class="tag-list__item">{{ tech }}</li>{% endfor %}
+  </ul>
+  {%- endif %}
+
+  {{ content }}
+
+  {%- if page.responsibilities.size > 0 %}
+  <div class="info-box">
+    <p class="info-box__title">担当範囲</p>
+    <ul>
+      {%- for item in page.responsibilities %}<li>{{ item }}</li>{% endfor %}
+    </ul>
+  </div>
+  {%- endif %}
+</article>
+
+<p><a href="{{ '/works/' | relative_url }}">&lt;&lt; 実績一覧に戻る</a></p>

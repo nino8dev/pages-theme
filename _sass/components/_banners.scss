@@ -1,0 +1,74 @@
+// =============================================================
+// 200x40 リンクバナー(サイト内ナビ・LINKSページ共通)
+// =============================================================
+
+.banner-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 1em 0;
+  padding: 0;
+  list-style: none;
+}
+
+.banner-grid__item {
+  display: block;
+}
+
+.banner-link {
+  display: inline-block;
+  width: 200px;
+  height: 40px;
+  border: $border-width-thin solid $color-border-strong;
+  background: #fff;
+
+  img {
+    display: block;
+    width: 200px;
+    height: 40px;
+  }
+
+  &:hover, &:focus-visible {
+    outline: 2px solid $color-wine;
+    outline-offset: 1px;
+  }
+}
+
+.banner-link__caption {
+  display: block;
+  margin-top: 0.2em;
+  font-size: $font-size-small;
+  text-align: center;
+}
+
+// LINKS ページ: バナー+説明文の一覧
+.link-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8em;
+  padding: 0.8em 0;
+  border-bottom: 1px dotted $color-border;
+}
+
+.link-entry:last-child {
+  border-bottom: none;
+}
+
+.link-entry__body h3 {
+  margin: 0 0 0.3em;
+
+  &::before {
+    content: none;
+  }
+}
+
+.link-entry__external {
+  font-size: $font-size-small;
+  color: $color-gray;
+}
+
+@media (max-width: 480px) {
+  .link-entry {
+    flex-direction: column;
+  }
+}
